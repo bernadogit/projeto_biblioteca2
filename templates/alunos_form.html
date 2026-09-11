@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+
+<h2>Alunos Cadastrados</h2>
+
+
+<p>
+    <a href="/alunos/novo">Cadastrar novo aluno</a>
+</p>
+
+
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Série</th>
+            <th>Turma</th>
+            <th>Telefone</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        {% for aluno in alunos %}
+        <tr>
+            <td>{{ aluno.id_aluno }}</td>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.serie }}</td>
+            <td>{{ aluno.turma }}</td>
+            <td>{{ aluno.telefone }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

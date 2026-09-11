@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca Escolar</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+
+<body>
+
+
+    <header>
+        <h1>Sistema Biblioteca Escolar</h1>
+
+
+        <nav>
+            <a href="/">Início</a>
+            <a href="/alunos">Alunos</a>
+        </nav>
+    </header>
+
+
+    <main>
+        {% block conteudo %}
+        {% endblock %}
+    </main>
+
+
+</body>
+</html>
