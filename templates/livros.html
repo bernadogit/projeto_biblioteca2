@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+
+<h2>Livros Cadastrados</h2>
+
+
+<p>
+    <a href="/livros/novo">Cadastrar novo livro</a>
+</p>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Categoria</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        {% for livro in livros %}
+        <tr>
+            <td>{{ livro.id_livro }}</td>
+            <td>{{ livro.titulo }}</td>
+            <td>{{ livro.autor }}</td>
+            <td>{{ livro.categoria }}</td>
+            <td>{{ livro.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

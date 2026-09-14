@@ -44,6 +44,7 @@ def formulario_aluno():
 
 @app.route("/alunos/cadastrar", methods=["POST"])
 def cadastrar_aluno():
+
     try:
         nome = request.form["nome"]
         serie = request.form["serie"]
@@ -78,6 +79,138 @@ def cadastrar_aluno():
     except Exception as erro:
         return f"Erro ao cadastrar aluno: {erro}"
 
+# Rotas para livros
+@app.route("/livros")
+def listar_livros():
+    try:
+        conexao = conectar()
+        cursor = conexao.cursor(dictionary=True)
+
+
+        cursor.execute("SELECT * FROM livro")
+        livros = cursor.fetchall()
+
+
+        cursor.close()
+        conexao.close()
+
+
+        return render_template("livros.html", livros=livros)
+
+
+    except Exception as erro:
+        return f"Erro ao listar livros: {erro}"
+
+
+@app.route("/livros/novo")
+def formulario_livro():
+    return render_template("livro_form.html")
+
+
+@app.route("/livros/cadastrar", methods=["POST"])
+def cadastrar_livro():
+    try:
+        titulo = request.form["titulo"]
+        autor = request.form["autor"]
+        categoria = request.form["categoria"]
+
+
+        conexao = conectar()
+        cursor = conexao.cursor()
+
+
+        sql = """
+            INSERT INTO livro (titulo, autor, categoria, status)
+            VALUES (%s, %s, %s, %s)
+        """
+
+
+        valores = (titulo, autor, categoria, "Disponível")
+
+
+        cursor.execute(sql, valores)
+        conexao.commit()
+
+
+        cursor.close()
+        conexao.close()
+
+
+        return redirect("/livros")
+
+
+    except Exception as erro:
+        return f"Erro ao cadastrar livro: {erro}"
+
+# Rotas para biliotecario
+@app.route("/bibliotecarios")
+def listar_bibliotecarios():
+    try:
+        conexao = conectar()
+        cursor = conexao.cursor(dictionary=True)
+
+
+        cursor.execute("SELECT * FROM bibliotecario")
+        bibliotecarios = cursor.fetchall()
+
+
+        cursor.close()
+        conexao.close()
+
+
+        return render_template("bibliotecarios.html", bibliotecarios=bibliotecarios)
+
+
+    except Exception as erro:
+        return f"Erro ao listar bibliotecários: {erro}"
+
+
+
+
+@app.route("/bibliotecarios/novo")
+def formulario_bibliotecario():
+    return render_template("bibliotecario_form.html")
+
+
+
+
+@app.route("/bibliotecarios/cadastrar", methods=["POST"])
+def cadastrar_bibliotecario():
+    try:
+        nome = request.form["nome"]
+        email = request.form["email"]
+
+
+        conexao = conectar()
+        cursor = conexao.cursor()
+
+
+        sql = """
+            INSERT INTO bibliotecario (nome, email)
+            VALUES (%s, %s)
+        """
+
+
+        valores = (nome, email)
+
+
+        cursor.execute(sql, valores)
+        conexao.commit()
+
+
+        cursor.close()
+        conexao.close()
+
+
+        return redirect("/bibliotecarios")
+
+
+    except Exception as erro:
+        return f"Erro ao cadastrar bibliotecário: {erro}"
+    
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
+

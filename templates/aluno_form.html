@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+
+<h2>Cadastrar Aluno</h2>
+
+
+<form method="POST" action="/alunos/cadastrar">
+
+
+    <label>Nome:</label><br>
+    <input type="text" name="nome" required><br><br>
+
+
+    <label>Série:</label><br>
+    <input type="text" name="serie" required><br><br>
+
+
+    <label>Turma:</label><br>
+    <input type="text" name="turma" required><br><br>
+
+
+    <label>Telefone:</label><br>
+    <input type="text" name="telefone"><br><br>
+
+
+    <button type="submit">Salvar</button>
+
+
+</form>
+
+
+<br>
+
+
+<a href="/alunos">Voltar para lista</a>
+
+
+{% endblock %}

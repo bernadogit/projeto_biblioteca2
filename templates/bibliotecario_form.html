@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+
+<h2>Cadastrar Bibliotecário</h2>
+
+
+<form method="POST" action="/bibliotecarios/cadastrar">
+
+
+    <label>Nome:</label>
+    <input type="text" name="nome" required>
+
+
+    <label>E-mail:</label>
+    <input type="email" name="email" required>
+
+
+    <button type="submit">Salvar</button>
+
+
+</form>
+
+
+<br>
+
+
+<a href="/bibliotecarios">Voltar para lista</a>
+
+
+{% endblock %}
