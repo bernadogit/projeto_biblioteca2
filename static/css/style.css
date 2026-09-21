@@ -186,19 +186,16 @@
     transition: color 0.3s var(--ease-soft);
   }
   
-  input {
+  input,
+select {
     width: 100%;
-    padding: 10px 12px;
-    margin-top: 6px;
-    margin-bottom: 14px;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
     border: 1px solid #aaa;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.9);
-    transition:
-      border-color 0.3s var(--ease-soft),
-      box-shadow 0.3s var(--ease-soft),
-      transform 0.2s var(--ease-out-expo);
-  }
+}
+
+
   
   input:focus {
     outline: none;

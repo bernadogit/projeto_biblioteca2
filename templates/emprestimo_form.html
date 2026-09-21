@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+
+<h2>Registrar Empréstimo</h2>
+
+
+<form method="POST" action="/emprestimos/cadastrar">
+
+
+    <label>Aluno:</label>
+    <select name="id_aluno" required>
+        <option value="">Selecione um aluno</option>
+        {% for aluno in alunos %}
+        <option value="{{ aluno.id_aluno }}">
+            {{ aluno.nome }} - {{ aluno.serie }} {{ aluno.turma }}
+        </option>
+        {% endfor %}
+    </select>
+
+
+    <label>Livro:</label>
+    <select name="id_livro" required>
+        <option value="">Selecione um livro</option>
+        {% for livro in livros %}
+        <option value="{{ livro.id_livro }}">
+            {{ livro.titulo }} - {{ livro.autor }}
+        </option>
+        {% endfor %}
+    </select>
+
+
+    <label>Bibliotecário:</label>
+    <select name="id_bibliotecario" required>
+        <option value="">Selecione o bibliotecário</option>
+        {% for bibliotecario in bibliotecarios %}
+        <option value="{{ bibliotecario.id_bibliotecario }}">
+            {{ bibliotecario.nome }}
+        </option>
+        {% endfor %}
+    </select>
+
+
+    <label>Data do Empréstimo:</label>
+    <input type="date" name="data_emprestimo" required>
+
+
+    <label>Data Prevista para Devolução:</label>
+    <input type="date" name="data_prevista_devolucao" required>
+
+
+    <button type="submit">Registrar Empréstimo</button>
+
+
+</form>
+
+
+<br>
+
+
+<a href="/emprestimos">Voltar para lista</a>
+
+
+{% endblock %}
