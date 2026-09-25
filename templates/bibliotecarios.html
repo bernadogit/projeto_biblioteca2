@@ -18,6 +18,7 @@
             <th>ID</th>
             <th>Nome</th>
             <th>E-mail</th>
+            <th>Ações</th>
         </tr>
     </thead>
 
@@ -28,6 +29,18 @@
             <td>{{ bibliotecario.id_bibliotecario }}</td>
             <td>{{ bibliotecario.nome }}</td>
             <td>{{ bibliotecario.email }}</td>
+            <td>
+                <a href="/bibliotecarios/editar/{{ bibliotecario.id_bibliotecario }}">Editar</a>
+
+
+                |
+
+
+                <a href="/bibliotecarios/excluir/{{ bibliotecario.id_bibliotecario }}"
+                   onclick="return confirm('Deseja realmente excluir este bibliotecário?')">
+                    Excluir
+                </a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>

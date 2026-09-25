@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+
+<h2>Editar Bibliotecário</h2>
+
+
+<form method="POST" action="/bibliotecarios/atualizar/{{ bibliotecario.id_bibliotecario }}">
+
+
+    <label>Nome:</label>
+    <input type="text" name="nome" value="{{ bibliotecario.nome }}" required>
+
+
+    <label>E-mail:</label>
+    <input type="email" name="email" value="{{ bibliotecario.email }}" required>
+
+
+    <button type="submit">Atualizar</button>
+
+
+</form>
+
+
+<br>
+
+
+<a href="/bibliotecarios">Voltar para lista</a>
+
+
+{% endblock %}

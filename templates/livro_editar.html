@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+
+<h2>Editar Livro</h2>
+
+
+<form method="POST" action="/livros/atualizar/{{ livro.id_livro }}">
+
+
+    <label>Título:</label>
+    <input type="text" name="titulo" value="{{ livro.titulo }}" required>
+
+
+    <label>Autor:</label>
+    <input type="text" name="autor" value="{{ livro.autor }}" required>
+
+
+    <label>Categoria:</label>
+    <input type="text" name="categoria" value="{{ livro.categoria }}">
+
+
+    <label>Status:</label>
+    <select name="status" required>
+        <option value="Disponível" {% if livro.status == 'Disponível' %}selected{% endif %}>
+            Disponível
+        </option>
+
+
+        <option value="Emprestado" {% if livro.status == 'Emprestado' %}selected{% endif %}>
+            Emprestado
+        </option>
+    </select>
+
+
+    <button type="submit">Atualizar</button>
+
+
+</form>
+
+
+<br>
+
+
+<a href="/livros">Voltar para lista</a>
+
+
+{% endblock %}
+

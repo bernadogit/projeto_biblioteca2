@@ -12,7 +12,7 @@
 </p>
 
 
-<table border="1" cellpadding="8">
+<table>
     <thead>
         <tr>
             <th>ID</th>
@@ -20,6 +20,7 @@
             <th>Série</th>
             <th>Turma</th>
             <th>Telefone</th>
+            <th>Ações</th>
         </tr>
     </thead>
 
@@ -32,6 +33,18 @@
             <td>{{ aluno.serie }}</td>
             <td>{{ aluno.turma }}</td>
             <td>{{ aluno.telefone }}</td>
+            <td>
+                <a href="/alunos/editar/{{ aluno.id_aluno }}">Editar</a>
+
+
+                |
+
+
+                <a href="/alunos/excluir/{{ aluno.id_aluno }}"
+                   onclick="return confirm('Deseja realmente excluir este aluno?')">
+                    Excluir
+                </a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>

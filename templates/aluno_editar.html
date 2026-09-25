@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+
+<h2>Editar Aluno</h2>
+
+
+
+<form method="POST" action="/alunos/atualizar/{{ aluno.id_aluno }}">
+
+
+    <label>Nome:</label>
+    <input type="text" name="nome" value="{{ aluno.nome }}" required>
+
+
+    <label>Série:</label>
+    <input type="text" name="serie" value="{{ aluno.serie }}" required>
+
+
+    <label>Turma:</label>
+    <input type="text" name="turma" value="{{ aluno.turma }}" required>
+
+
+    <label>Telefone:</label>
+    <input type="text" name="telefone" value="{{ aluno.telefone }}">
+
+
+    <button type="submit">Atualizar</button>
+
+
+</form>
+
+
+<br>
+
+
+<a href="/alunos">Voltar para lista</a>
+
+
+{% endblock %}
