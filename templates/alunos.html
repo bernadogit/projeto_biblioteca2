@@ -11,6 +11,22 @@
     <a href="/alunos/novo">Cadastrar novo aluno</a>
 </p>
 
+<form method="GET" action="/alunos">
+
+
+    <label>Pesquisar aluno:</label>
+    <input type="text" name="pesquisa" value="{{ pesquisa }}" placeholder="Nome, série ou turma">
+
+
+    <button type="submit">Pesquisar</button>
+
+
+    <a href="/alunos">Limpar</a>
+
+
+</form>
+<br>
+
 
 <table>
     <thead>

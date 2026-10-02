@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+
+<h2>Empréstimos Atrasados</h2>
+
+
+<p>
+    <a href="/emprestimos">Voltar para empréstimos</a>
+</p>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Aluno</th>
+            <th>Livro</th>
+            <th>Bibliotecário</th>
+            <th>Data Empréstimo</th>
+            <th>Previsão Devolução</th>
+            <th>Dias de Atraso</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        {% for emprestimo in emprestimos %}
+        <tr>
+            <td>{{ emprestimo.id_emprestimo }}</td>
+            <td>{{ emprestimo.aluno }}</td>
+            <td>{{ emprestimo.livro }}</td>
+            <td>{{ emprestimo.bibliotecario }}</td>
+            <td>{{ emprestimo.data_emprestimo }}</td>
+            <td>{{ emprestimo.data_prevista_devolucao }}</td>
+            <td>{{ emprestimo.dias_atraso }}</td>
+            <td>{{ emprestimo.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% if emprestimos|length == 0 %}
+    <p>Nenhum empréstimo atrasado encontrado.</p>
+{% endif %}
+
+
+{% endblock %}

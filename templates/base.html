@@ -13,10 +13,15 @@
 
 <body>
 
-
     <header>
+    <div class="topo">
         <h1>Sistema Biblioteca Escolar</h1>
+        <p>Projeto Integrador - 1º Ano</p>
 
+
+        {% if session.nome %}
+            <p>Usuário logado: {{ session.nome }} | Perfil: {{ session.perfil }}</p>
+        {% endif %}
 
         <nav>
             <a href="/">Início</a>
@@ -24,15 +29,37 @@
             <a href="/livros">Livros</a>
             <a href="/bibliotecarios">Bibliotecários</a>
             <a href="/emprestimos">Empréstimos</a>
-        </nav>
+            <a href="/emprestimos/atrasados">Atrasados</a>
+            <a href="/logout">Sair</a>
 
+        </nav>
     </header>
 
 
     <main>
+
+
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% if mensagens %}
+                {% for categoria, mensagem in mensagens %}
+                    <div class="mensagem {{ categoria }}">
+                        {{ mensagem }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
         {% block conteudo %}
         {% endblock %}
+
+
     </main>
+
+
+    <footer>
+        <p>@2026 - Curso Técnico em Desenvolvimento de Sistemas</p>
+    </footer>
 
 
 </body>
